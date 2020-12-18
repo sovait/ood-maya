@@ -24,10 +24,25 @@ attributes:
       - [ "sw engine",   "sw"  ]
       - [ "Arnold engine (coming with 2020)", "arnold"  ]
 
+  ProjName:
+    widget: text_field
+    label: Projet Direcotry Name (e.g. My_Project_Folder)
+    required: true
+    value: ""
+
+  SceneName:
+    widget: text_field
+    label: Scene File (e.g. scenes/My_Scene.mb)
+    required: true
+    value: "scenes/"
+
+
+
+
   bc_queue: "normal_q"
   bc_num_min_per_frame: 59
   bc_num_nodes: 1
-  bc_account: arctest
+  bc_account: art45443danimationstudio
 #    widget: text_field
 #    label: "Account (ARC allocation)"
 #    help: "This ARC cluster allocation for your rendering course used by the system (SLURM) scheduler. Ask your Instructor if not working."
@@ -45,6 +60,8 @@ attributes:
 form:
   - MayaVersion
   - RenderEngine
+  - ProjName
+  - SceneName
   - bc_account
   - bc_queue
   - bc_num_min_per_frame
