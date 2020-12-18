@@ -1,0 +1,55 @@
+#!/bin/bash
+
+## Load up singularity module:
+module load singularity/3.5.1
+
+
+######## NEW VARIABLES FROM ONDEMAND
+export ENGINE=$RenderEngine                             
+export PROJ_NAME="NewTestARC_GenericRenderer"      ## BOB: Have'nt captured this from OnDemand yet (need file exporer?)
+export PROJ_DIR="$HOME/$PROJ_NAME"                 ## Assumes PROJ_NAME is in user's home dir...
+export FILE="scenes/GenericRenderTest.mb "         ## BOB: Have'nt captured this from OnDemand yet (need file exporer?) 
+
+export MAYA_IMG="/groups/arcsingularity/$MayaVersion"     ## Maya singularity container (see tweeks)
+#export MAYA_IMG="/groups/arcsingularity/local_maya-2019_m2a_docker.sif"     ## Maya singularity container (see tweeks)
+export DIR_BINDS=${TMPDIR}:/tmp,/groups:/groups,/work:/work
+
+## Optional
+export STARTFRAME=""                                    ## Example " -s $(start_frame) " <-- BOB: from OnDemand?
+export ENDFRAME=""                                      ## Example " -e $(end_frame) "
+export OPTS=" -of png -skipExistingFrames off "         ## Other optional options...
+
+
+
+######## OLD VARIABLES
+### Maya Rendering variables (from OnDemand?)
+#export ENGINE="sw"                                      ## Examples: "sw" (default), "arnold" (if container supports it)
+#export PROJ_NAME="NewTestARC_GenericRenderer"           ## <---- from OnDemand
+#export PROJ_DIR="$HOME/$PROJ_NAME"                      ##      
+#export FILE="scenes/GenericRenderTest.mb "              ## BOB: "scenes" should always be the same.. just the mb file changes
+#
+### Do Not Touch (once Tweeks/Bob set it up)
+#export MAYA_IMG="/groups/arcsingularity/local_maya-2019_m2a_docker.sif"     ## Maya singularity container (see tweeks)
+#export DIR_BINDS=${TMPDIR}:/tmp,/groups:/groups,/work:/work
+o
+#
+### Optional
+#export STARTFRAME=""                                    ## Example " -s $(start_frame) " <-- BOB: from OnDemand?
+#export ENDFRAME=""                                      ## Example " -e $(end_frame) "
+#export OPTS=" -of png -skipExistingFrames off "         ## Other optional options...
+
+
+## Structured command line example:
+singularity exec --bind $DIR_BINDS $MAYA_IMG \
+    Render -r $ENGINE $OPTS \
+    -proj $PROJ_DIR \
+    $STARTFRAME $ENDFRAME 
+    $FILE
+
+## Working example
+#singularity exec --bind=${TMPDIR}:/tmp,/groups:/groups,/work:/work local_maya-2019_m2a_docker.sif \
+#Render -r sw \
+#-proj ~/SOVA/MAYA-PROJS/Test_ARC_VT \
+#-skipExistingFrames off  \
+#~/SOVA/MAYA-PROJS/Test_ARC_VT/Test_ARC_VT.mel
+
