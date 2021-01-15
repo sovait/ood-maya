@@ -1,7 +1,7 @@
 # Batch Connect app configuration file
 #
 ---
-cluster: 'dragonstooth'
+cluster: 'tinkercliffs'
 
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
@@ -42,11 +42,12 @@ attributes:
   bc_queue: "normal_q"
   bc_num_min_per_frame: 59
   bc_num_nodes: 1
-  bc_account: art45443danimationstudio
-#    widget: text_field
-#    label: "Account (ARC allocation)"
-#    help: "This ARC cluster allocation for your rendering course used by the system (SLURM) scheduler. Ask your Instructor if not working."
-#    value: art45443danimationstudio
+#  bc_account: arcadm
+  bc_account:
+    widget: text_field
+    label: "Account (ARC allocation)"
+    help: "This ARC cluster allocation for your rendering course used by the system (SLURM) scheduler. Ask your Instructor if not working."
+    value: art45443danimationstudio
 
   num_cores: 6
 #    widget: number_field
