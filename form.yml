@@ -135,5 +135,5 @@ attributes:
   num_cores: 64
 #    widget: number_field
 #    label: Number of cores per node (12)
-#    value: 12
+#    value: 12 ??
 
