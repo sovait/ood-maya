@@ -1,6 +1,6 @@
-# Batch Connect - Maya 3d Rendering Container
+## Batch Connect
 
-## ARC Maya 3D Rendering Service
+## ARC Maya Arnold Rendering
 
 This app will launch a multi-threaded, Maya 3D rendering job on ARC.
 
